@@ -35,9 +35,5 @@ namespace cdbapi.Services
             double valorFinalBruto = lstValorFinalMensal.Sum();
             return valorFinalBruto;
         }
-        public double CalcularValorLiquido(double ValorBruto, double ValorImposto)
-        {
-            return ValorBruto - ValorImposto;
-        }
     }
 }
