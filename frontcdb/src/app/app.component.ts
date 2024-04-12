@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,ChangeDetectorRef} from '@angular/core';
 import { FormBuilder, FormGroup,Validators} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -13,7 +12,7 @@ export class AppComponent implements  OnInit {
   valorBruto: number = 0;
   valorLiquido: number = 0;
 
-  constructor(private fb: FormBuilder, private http: HttpClient) { }
+  constructor(private fb: FormBuilder, private http: HttpClient,private cdr: ChangeDetectorRef) { }
     
   ngOnInit() {
     this.investmentForm = this.fb.group({
@@ -23,10 +22,12 @@ export class AppComponent implements  OnInit {
   }
    onSubmit() {
        if (!this.investmentForm) return; // Check if form is initialized
-    this.http.post<any>('https://localhost:5001/api/Simulador', this.investmentForm.value)
+    this.http.post<any>('http://localhost:5000/api/cdb/Simulador', this.investmentForm.value)
       .subscribe(response => {
-        this.valorBruto = response.ValorBruto;
-        this.valorLiquido = response.ValorLiquido;
+        console.log (response)
+        this.valorBruto = response.valorBruto;
+        this.valorLiquido = response.valorLiquido;
+       
       });
   }
 }

@@ -5,22 +5,21 @@ using Microsoft.AspNetCore.Mvc;
 namespace cdbapi.Controllers;
 
 [ApiController]
-[Route("app/[controller]")]
+[Route("api/[controller]")]
 public class CdbController : ControllerBase
 {
 
-    private readonly ILogger<CdbController> _logger;
-    private ICdbService _cdbService;
-    private IImpostoService _impostoService;
-    public CdbController(ILogger<CdbController> logger, ICdbService cdbService, IImpostoService impostoService)
+    private readonly ICdbService _cdbService;
+    private readonly IImpostoService _impostoService;
+    public CdbController(ICdbService cdbService, IImpostoService impostoService)
     {
-        _logger = logger;
+
         _cdbService = cdbService;
         _impostoService = impostoService;
     }
 
 
-    [HttpPost(Name = "Simulador")]
+    [HttpPost("Simulador")]
     public ActionResult<Cdb> Simulador(Cdb request)
     {
         if (request == null)

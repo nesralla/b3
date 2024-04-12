@@ -397,9 +397,14 @@
     <button type="submit" [disabled]="investmentForm.invalid">Simular</button>
   </form>
 
-  <div *ngIf="valorBruto !== undefined && valorLiquido !== undefined">
-    <p>Resultado Bruto: {{ valorBruto }}</p>
-    <p>Resultado Líquido: {{ valorLiquido }}</p>
+  <div>
+    <p>
+      Resultado Bruto: {{ valorBruto | currency : "BRL" : "symbol" : "1.2-2" }}
+    </p>
+    <p>
+      Resultado Líquido:
+      {{ valorLiquido | currency : "BRL" : "symbol" : "1.2-2" }}
+    </p>
   </div>
   <!-- Footer -->
   <footer>
