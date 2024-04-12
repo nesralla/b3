@@ -9,5 +9,6 @@ namespace cdbapi.Services
     {
         double CalcularValorBruto(double ValorInvestido);
         double CalcularValorBruto(double ValorInvestido, int PrazoEmMeses);
+        double CalcularValorLiquido(double ValorBruto, double ValorImposto);
     }
 }

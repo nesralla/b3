@@ -11,6 +11,7 @@ namespace cdbapi.Models
         public int PrazoEmMeses { get; set; }
         public double ValorBruto { get; set; }
         public double ValorLiquido { get; set; }
+        public double ValorImposto { get; set; }
         public double Taxa { get; set; }
         public double Aliquota { get; set; }
     }

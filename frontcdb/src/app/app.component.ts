@@ -10,18 +10,23 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent implements  OnInit {
   title = 'CDB  Calculator';
   investmentForm!: FormGroup;
-  resultadoBruto: number = 0;
-  resultadoLiquido: number = 0;
+  valorBruto: number = 0;
+  valorLiquido: number = 0;
 
   constructor(private fb: FormBuilder, private http: HttpClient) { }
     
   ngOnInit() {
     this.investmentForm = this.fb.group({
-      amount: ['', [Validators.required, Validators.min(0.01)]],
-      durationInMonths: ['', [Validators.required, Validators.min(2)]]
+      valorInvestido: ['', [Validators.required, Validators.min(0.01)]],
+      prazoEmMeses: ['', [Validators.required, Validators.min(2)]]
     });
   }
    onSubmit() {
-   
+       if (!this.investmentForm) return; // Check if form is initialized
+    this.http.post<any>('api/Simulador', this.investmentForm.value)
+      .subscribe(response => {
+        this.valorBruto = response.ValorBruto;
+        this.valorLiquido = response.ValorLiquido;
+      });
   }
 }
