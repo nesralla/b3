@@ -367,39 +367,39 @@
     (ngSubmit)="onSubmit()"
   >
     <div>
-      <label for="amount">Valor Monetário:</label>
-      <input type="number" formControlName="amount" id="amount" />
-      <div
-        *ngIf="
-          investmentForm.get('amount')?.invalid &&
-          investmentForm.get('amount')?.touched
-        "
-      >
-        Valor monetário é obrigatório e deve ser maior que 0.
-      </div>
-    </div>
-    <div>
-      <label for="durationInMonths">Duração em Meses:</label>
+      <label for="valorInvestido">Valor Investido:</label>
       <input
         type="number"
-        formControlName="durationInMonths"
-        id="durationInMonths"
+        formControlName="valorInvestido"
+        id="valorInvestido"
       />
       <div
         *ngIf="
-          investmentForm.get('durationInMonths')?.invalid &&
-          investmentForm.get('durationInMonths')?.touched
+          investmentForm.get('valorInvestido')?.invalid &&
+          investmentForm.get('valorInvestido')?.touched
+        "
+      >
+        Valor investido obrigatório e deve ser maior que 0.
+      </div>
+    </div>
+    <div>
+      <label for="prazoEmMeses">Prazo em Meses:</label>
+      <input type="number" formControlName="prazoEmMeses" id="prazoEmMeses" />
+      <div
+        *ngIf="
+          investmentForm.get('prazoEmMeses')?.invalid &&
+          investmentForm.get('prazoEmMeses')?.touched
         "
       >
         Duração em meses é obrigatória e deve ser maior que 1.
       </div>
     </div>
-    <button type="submit" [disabled]="investmentForm.invalid">Calcular</button>
+    <button type="submit" [disabled]="investmentForm.invalid">Simular</button>
   </form>
 
-  <div *ngIf="resultadoBruto !== undefined && resultadoLiquido !== undefined">
-    <p>Resultado Bruto: {{ resultadoBruto }}</p>
-    <p>Resultado Líquido: {{ resultadoLiquido }}</p>
+  <div *ngIf="valorBruto !== undefined && valorLiquido !== undefined">
+    <p>Resultado Bruto: {{ valorBruto }}</p>
+    <p>Resultado Líquido: {{ valorLiquido }}</p>
   </div>
   <!-- Footer -->
   <footer>
